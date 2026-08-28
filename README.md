@@ -1,4 +1,4 @@
-# AI Financial Analyst Agent 📈
+# Finet AI (Financial Analyst Agent) 📈
 
 An intelligent AI agent for stock market analysis and insights, powered by machine learning and natural language processing.
 
