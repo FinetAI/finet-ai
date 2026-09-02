@@ -22,7 +22,7 @@ export default function LoginPage() {
       setIsLoading(false)
       toast({
         title: "Login successful",
-        description: "Welcome back to AI Stock Trading Agent",
+        description: "Welcome back to Finet AI",
       })
       router.push("/dashboard")
     }, 1500)
@@ -34,7 +34,7 @@ export default function LoginPage() {
       setIsLoading(false)
       toast({
         title: "Google login successful",
-        description: "Welcome back to AI Stock Trading Agent",
+        description: "Welcome back to Finet AI",
       })
       router.push("/dashboard")
     }, 1500)

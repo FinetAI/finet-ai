@@ -20,7 +20,7 @@ export function DashboardSidebar() {
   return (
     <Sidebar>
       <SidebarHeader className="border-b border-[#00FF00]/30 p-4">
-        <h2 className="text-white text-xl">AI Stock Predicting Agent</h2>
+        <h2 className="text-white text-xl">Finet AI</h2>
       </SidebarHeader>
 
       <SidebarContent>
