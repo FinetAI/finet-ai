@@ -62,9 +62,7 @@ export default function CompleteRegistrationPage() {
       <div className="w-full max-w-md space-y-8 p-8 rounded-lg">
         <div className="text-center">
           <h1 className="neon-text text-4xl mb-6">
-            AI Stock Trading
-            <br />
-            Agent
+            Finet AI
           </h1>
         </div>
 
@@ -204,4 +202,3 @@ export default function CompleteRegistrationPage() {
     </div>
   )
 }
-

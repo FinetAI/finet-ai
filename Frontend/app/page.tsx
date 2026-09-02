@@ -13,9 +13,7 @@ export default function Home() {
     <div className="flex min-h-screen flex-col items-center justify-center p-4 bg-black text-white">
       <div className="text-center space-y-6 mb-12">
         <h1 className="text-[#00FF00] text-5xl md:text-6xl font-bold">
-          AI Stock Predicting
-          <br />
-          Agent
+          Finet AI
         </h1>
         <p className="text-lg md:text-xl max-w-2xl">
           Advanced AI-powered predictions for smarter trading decisions

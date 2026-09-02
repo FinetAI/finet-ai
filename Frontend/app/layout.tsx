@@ -13,7 +13,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "AI Stock Trading Agent",
+  title: "Finet AI",
   description: "AI-powered stock trading prediction platform",
   generator: "v0.dev",
 }
