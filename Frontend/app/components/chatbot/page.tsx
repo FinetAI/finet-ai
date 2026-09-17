@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { X } from "lucide-react"
 import { Button } from "@/app/components/ui/button"
 import { Input } from "@/app/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card"
@@ -13,6 +14,7 @@ enum ConversationState {
 }
 
 export function Chatbot() {
+  const [isOpen, setIsOpen] = useState(true)
   const [messages, setMessages] = useState<{ user: string; bot: string }[]>([])
   const [input, setInput] = useState("")
   const [loading, setLoading] = useState(false)
@@ -63,10 +65,22 @@ export function Chatbot() {
     }
   }
 
+  if (!isOpen) return null
+
   return (
     <Card className="fixed bottom-4 right-4 w-80 bg-black border border-[#00FF00]/30">
-      <CardHeader>
+      <CardHeader className="flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-[#00FF00]">AI Chatbot</CardTitle>
+        <Button
+          type="button"
+          variant="ghost"
+          size="icon"
+          aria-label="Close AI Chatbot"
+          onClick={() => setIsOpen(false)}
+          className="h-8 w-8 text-[#00FF00] hover:bg-[#00FF00]/10 hover:text-[#00FF00]"
+        >
+          <X className="h-4 w-4" />
+        </Button>
       </CardHeader>
       <CardContent className="flex flex-col space-y-4">
         <div className="flex-1 overflow-y-auto max-h-64 space-y-2">
