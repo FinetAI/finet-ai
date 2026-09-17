@@ -3,7 +3,7 @@ import { SidebarProvider } from "@/app/components/ui/sidebar";
 import { SidebarTrigger } from "@/app/components/ui/sidebar";
 import { DashboardSidebar } from "@/app/components/dashboard/sidebar";
 import { UserNav } from "@/app/components/dashboard/user-nav";
-import { Chatbot } from "@/app/components/chatbot/page.tsx";
+import { Chatbot } from "@/app/components/chatbot/page";
 
 export default function DashboardLayout({
   children,
