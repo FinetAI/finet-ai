@@ -1,9 +1,19 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/app/components/ui/tabs"
-import { MarketOverview } from "@/app/components/dashboard/market-overview"
-import { PredictionChart } from "@/app/components/dashboard/prediction-chart"
-import { RecentTrades } from "@/app/components/dashboard/recent-trades"
-import { TradingVolume } from "@/app/components/dashboard/trading-volume"
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/app/components/ui/card";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/app/components/ui/tabs";
+import { MarketOverview } from "@/app/components/dashboard/market-overview";
+import { PredictionChart } from "@/app/components/dashboard/prediction-chart";
+import { RecentTrades } from "@/app/components/dashboard/recent-trades";
+import { TradingVolume } from "@/app/components/dashboard/trading-volume";
 
 export default function DashboardPage() {
   return (
@@ -11,7 +21,9 @@ export default function DashboardPage() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card className="bg-black border border-[#00FF00]/30">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-white">Portfolio Value</CardTitle>
+            <CardTitle className="text-sm font-medium text-white">
+              Portfolio Value
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-[#00FF00]">$45,231.89</div>
@@ -22,7 +34,9 @@ export default function DashboardPage() {
         </Card>
         <Card className="bg-black border border-[#00FF00]/30">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-white">Active Positions</CardTitle>
+            <CardTitle className="text-sm font-medium text-white">
+              Active Positions
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-[#00FF00]">12</div>
@@ -33,7 +47,9 @@ export default function DashboardPage() {
         </Card>
         <Card className="bg-black border border-[#00FF00]/30">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-white">AI Predictions</CardTitle>
+            <CardTitle className="text-sm font-medium text-white">
+              AI Predictions
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-[#00FF00]">7</div>
@@ -44,17 +60,21 @@ export default function DashboardPage() {
         </Card>
         <Card className="bg-black border border-[#00FF00]/30">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-white">Market Sentiment</CardTitle>
+            <CardTitle className="text-sm font-medium text-white">
+              Market Sentiment
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-[#00FF00]">Bullish</div>
-            <p className="text-xs text-[#00FF00]/70">Based on 24h market analysis</p>
+            <p className="text-xs text-[#00FF00]/70">
+              Based on 24h market analysis
+            </p>
           </CardContent>
         </Card>
       </div>
 
       <Tabs defaultValue="overview" className="space-y-4">
-        <TabsList className="bg-muted border border-[#00FF00]/30">
+        <TabsList className="w-full justify-start overflow-x-auto bg-muted border border-[#00FF00]/30">
           <TabsTrigger
             value="overview"
             className="data-[state=active]:bg-[#00FF00] data-[state=active]:text-black text-white"
@@ -94,5 +114,5 @@ export default function DashboardPage() {
         </TabsContent>
       </Tabs>
     </div>
-  )
+  );
 }
