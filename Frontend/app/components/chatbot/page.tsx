@@ -1,10 +1,15 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { X } from "lucide-react"
-import { Button } from "@/app/components/ui/button"
-import { Input } from "@/app/components/ui/input"
-import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card"
+import { useState } from "react";
+import { MessageCircle, X } from "lucide-react";
+import { Button } from "@/app/components/ui/button";
+import { Input } from "@/app/components/ui/input";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/app/components/ui/card";
 
 enum ConversationState {
   INITIAL,
@@ -14,19 +19,21 @@ enum ConversationState {
 }
 
 export function Chatbot() {
-  const [isOpen, setIsOpen] = useState(true)
-  const [messages, setMessages] = useState<{ user: string; bot: string }[]>([])
-  const [input, setInput] = useState("")
-  const [loading, setLoading] = useState(false)
-  const [conversationState, setConversationState] = useState<ConversationState>(ConversationState.INITIAL)
+  const [isOpen, setIsOpen] = useState(true);
+  const [messages, setMessages] = useState<{ user: string; bot: string }[]>([]);
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [conversationState, setConversationState] = useState<ConversationState>(
+    ConversationState.INITIAL,
+  );
 
   const handleSend = async () => {
-    if (input.trim() === "") return
+    if (input.trim() === "") return;
 
-    const userMessage = input
-    setMessages((prev) => [...prev, { user: userMessage, bot: "..." }])
-    setInput("")
-    setLoading(true)
+    const userMessage = input;
+    setMessages((prev) => [...prev, { user: userMessage, bot: "..." }]);
+    setInput("");
+    setLoading(true);
 
     try {
       const res = await fetch("/api/query", {
@@ -37,35 +44,52 @@ export function Chatbot() {
         body: JSON.stringify({
           query: userMessage,
           symbol: "TSLA", // Change as needed
-          period: "6mo",   // Change as needed
+          period: "6mo", // Change as needed
         }),
-      })
+      });
 
-      if (!res.ok) throw new Error(`Failed to fetch response: ${res.statusText}`)
+      if (!res.ok)
+        throw new Error(`Failed to fetch response: ${res.statusText}`);
 
-      const data = await res.json()
-      console.log("API Response:", data)
+      const data = await res.json();
+      console.log("API Response:", data);
 
-      const botReply = data.response || "Sorry, I couldn't understand that."
+      const botReply = data.response || "Sorry, I couldn't understand that.";
 
       setMessages((prev) =>
         prev.map((msg, index) =>
-          index === prev.length - 1 ? { ...msg, bot: botReply } : msg
-        )
-      )
+          index === prev.length - 1 ? { ...msg, bot: botReply } : msg,
+        ),
+      );
     } catch (error) {
-      console.error("Error fetching response:", error)
+      console.error("Error fetching response:", error);
       setMessages((prev) =>
         prev.map((msg, index) =>
-          index === prev.length - 1 ? { ...msg, bot: "Error fetching response." } : msg
-        )
-      )
+          index === prev.length - 1
+            ? { ...msg, bot: "Error fetching response." }
+            : msg,
+        ),
+      );
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
-  if (!isOpen) return null
+  if (!isOpen) {
+    return (
+      <Button
+        type="button"
+        variant="outline"
+        size="icon"
+        aria-label="Open AI Chatbot"
+        title="Open AI Chatbot"
+        onClick={() => setIsOpen(true)}
+        className="fixed bottom-4 right-4 z-50 h-12 w-12 rounded-full border-2 border-[#00FF00] bg-black text-[#00FF00] shadow-lg shadow-[#00FF00]/30 hover:bg-[#00FF00] hover:text-black"
+      >
+        <MessageCircle className="h-6 w-6" />
+      </Button>
+    );
+  }
 
   return (
     <Card className="fixed bottom-4 right-4 w-80 bg-black border border-[#00FF00]/30">
@@ -98,11 +122,15 @@ export function Chatbot() {
             placeholder="Type a message..."
             className="flex-1 bg-black border-[#00FF00]/30 text-white"
           />
-          <Button onClick={handleSend} className="bg-[#00FF00] text-black" disabled={loading}>
+          <Button
+            onClick={handleSend}
+            className="bg-[#00FF00] text-black"
+            disabled={loading}
+          >
             {loading ? "Sending..." : "Send"}
           </Button>
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }
